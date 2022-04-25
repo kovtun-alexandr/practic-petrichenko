@@ -32,3 +32,11 @@ const personalMovieDB = {
   genres: [],
   privat: false
 };
+
+let lastViewed = prompt('Один из последних просмотренных фильмов?','');
+let rating = prompt('На сколько оцените его?','');
+
+personalMovieDB.movies["lastViewed"] = lastViewed;
+personalMovieDB.movies['rating'] = rating;
+
+console.log(personalMovieDB);
