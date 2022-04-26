@@ -23,7 +23,7 @@
 
 'use strict';
 
-let numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?','');
+let numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?','');
 
 const personalMovieDB = {
   count: numberOfFilms,
@@ -33,7 +33,13 @@ const personalMovieDB = {
   privat: false
 };
 
-
+if (personalMovieDB.count < 10) {
+  alert('Просмотрено довольно мало фильмов');
+} else if(personalMovieDB.count > 10 && personalMovieDB.count < 30) {
+  alert('Вы киноман');
+} else {
+  alert('Произошла ошибка');
+}
 
 let count = 0;
 
