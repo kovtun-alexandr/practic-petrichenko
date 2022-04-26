@@ -33,15 +33,22 @@ const personalMovieDB = {
   privat: false
 };
 
+
+
 let count = 0;
 
 while (count < 2) {
-  const a = prompt('Один из последних просмотренных фильмов?',''),
-        b = prompt('На сколько оцените его?','');
+  let lastMovie = prompt('Один из последних просмотренных фильмов?'),
+        movieRating = prompt('На сколько оцените его?');
+
+  if(lastMovie === null){
+    lastMovie = prompt('Один из последних просмотренных фильмов?');
+  } else if(lastMovie != '' && lastMovie.length < 50){
+    personalMovieDB.movies[lastMovie] = movieRating;
+    count++;
+  }
   
-  count++;
-  
-  personalMovieDB.movies[a] = b;
+
 }
 
       // c = prompt('Один из последних просмотренных фильмов?',''),
