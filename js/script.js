@@ -34,11 +34,13 @@ const personalMovieDB = {
 };
 
 if (personalMovieDB.count < 10) {
-  alert('Просмотрено довольно мало фильмов');
-} else if(personalMovieDB.count > 10 && personalMovieDB.count < 30) {
-  alert('Вы киноман');
+  console.log('Просмотрено довольно мало фильмов');
+} else if(personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+  console.log('Вы класический зритель');
+} else if (personalMovieDB.count >= 30) {
+  console.log('Вы киноман');
 } else {
-  alert('Произошла ошибка');
+  console.log('Произошла ошибка');
 }
 
 // let count = 0;
@@ -47,35 +49,38 @@ if (personalMovieDB.count < 10) {
 //   let lastMovie = prompt('Один из последних просмотренных фильмов?'),
 //         movieRating = prompt('На сколько оцените его?');
 
-//   if(lastMovie === null){
-//     lastMovie = prompt('Один из последних просмотренных фильмов?');
-//   } else if(lastMovie != '' && lastMovie.length < 50){
-//     personalMovieDB.movies[lastMovie] = movieRating;
-//     count++;
-//   }
+  // if(lastMovie === null){
+  //   lastMovie = prompt('Один из последних просмотренных фильмов?');
+  // } else if(lastMovie != '' && lastMovie.length < 50){
+  //   personalMovieDB.movies[lastMovie] = movieRating;
+  //   count++;
+  // }
 // }
 
 // do {
-//   let lastMovie = prompt('Один из последних просмотренных фильмов?'),
+//   const lastMovie = prompt('Один из последних просмотренных фильмов?'),
 //         movieRating = prompt('На сколько оцените его?');
 
-//   if(lastMovie === null){
-//     lastMovie = prompt('Один из последних просмотренных фильмов?');
-//   } else if(lastMovie != '' && lastMovie.length < 50){
-//     personalMovieDB.movies[lastMovie] = movieRating;
-//     count++;
-//   }
+  // if(lastMovie != null && movieRating != null && lastMovie != '' && movieRating != '' && lastMovie.length < 50){
+  //   personalMovieDB.movies[lastMovie] = movieRating;
+  //   console.log('done');
+  //   count++;
+  // } else {
+  //   console.log('error');
+  //   count--;
+  // } 
 // } while (count <2);
 
-for (let x = 0; x < 2; ) {
-  let lastMovie = prompt('Один из последних просмотренных фильмов?'),
+for (let x = 0; x < 2; x++) {
+  const lastMovie = prompt('Один из последних просмотренных фильмов?'),
         movieRating = prompt('На сколько оцените его?');
 
-  if(lastMovie === null){
-    lastMovie = prompt('Один из последних просмотренных фильмов?');
-  } else if(lastMovie != '' && lastMovie.length < 50){
+  if(lastMovie != null && movieRating != null && lastMovie != '' && movieRating != '' && lastMovie.length < 50){
     personalMovieDB.movies[lastMovie] = movieRating;
-    x++;
+    console.log('done');
+  } else {
+    console.log('error');
+    x--;
   } 
 }
 
