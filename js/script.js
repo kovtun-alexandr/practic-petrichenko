@@ -102,29 +102,26 @@ function detectPersonalLevel(){
 
 detectPersonalLevel();
 
-function showMyDB(){
-  if(personalMovieDB.privat == false){
+function showMyDB(hidden){
+  if(!hidden){
     console.log(personalMovieDB);
   }
 }
 
-showMyDB();
+showMyDB(personalMovieDB.privat);
 
 // 3) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос 
 // "Ваш любимый жанр под номером ${номер по порядку}". Каждый ответ записывается в массив данных
 // genres
 
 function writeYourGenres(){
-  let count = 1;
-  
-  for(let i = 0; i < 3; i++){
-    let yourGenres = prompt(`Ваш любимый жанр под номером ${count}`,'');
+  for(let i = 1; i <= 3; i++){
+    let yourGenres = prompt(`Ваш любимый жанр под номером ${i}`,'');
     
     while(yourGenres == '' || yourGenres == null){
-      yourGenres = prompt(`Ваш любимый жанр под номером ${count}`,'');
+      yourGenres = prompt(`Ваш любимый жанр под номером ${i}`,'');
     }
-    personalMovieDB.genres[i] = yourGenres;
-    count++;
+    personalMovieDB.genres[i - 1] = yourGenres;
   }
 }
 
