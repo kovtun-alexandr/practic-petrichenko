@@ -40,7 +40,7 @@ const personalMovieDB = {
   movies: {},
   actors: {},
   genres: [],
-  privat: false,
+  privat: true,
   rememberMyFilms: function() {
     for (let x = 0; x < 2; x++) {
       const lastMovie = prompt('Один из последних просмотренных фильмов?'),
@@ -80,12 +80,20 @@ const personalMovieDB = {
     if(!hidden){
       console.log(personalMovieDB);
     }
+  },
+  toggleVisibleMyDB: function() {
+    if(personalMovieDB.privat === true) {
+      personalMovieDB.privat = false;
+    } else {
+      personalMovieDB.privat = true;
+    }
   }
 };
 
 personalMovieDB.rememberMyFilms();
 personalMovieDB.detectPersonalLevel();
 personalMovieDB.writeYourGenres();
+personalMovieDB.toggleVisibleMyDB();
 personalMovieDB.showMyDB(personalMovieDB.privat);
 
 // let count = 0;
