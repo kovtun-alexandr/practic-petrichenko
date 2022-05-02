@@ -23,24 +23,19 @@
 
 'use strict';
 
-let numberOfFilms;
-
-function start(){
-  numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?','');
-
-  while(numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)){
-    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?','');
-  }
-}
-
-start();
-
 const personalMovieDB = {
-  count: numberOfFilms,
+  count: 0,
   movies: {},
   actors: {},
   genres: [],
   privat: true,
+  start: function(){
+    personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?','');
+  
+    while(personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)){
+      personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?','');
+    }
+  },
   rememberMyFilms: function() {
     for (let x = 0; x < 2; x++) {
       const lastMovie = prompt('Один из последних просмотренных фильмов?'),
@@ -70,12 +65,14 @@ const personalMovieDB = {
     for(let i = 1; i <= 3; i++){
       let yourGenres = prompt(`Ваш любимый жанр под номером ${i}`,'');
       
-      while(yourGenres == '' || yourGenres == null){
-        yourGenres = prompt(`Ваш любимый жанр под номером ${i}`,'');
+      if(yourGenres == '' || yourGenres == null){
+        console.log('Вы ввели не коректные данные или не ввели их вовсе');
+        i--;
+      } else {
+        personalMovieDB.genres[i - 1] = yourGenres;
       }
-      personalMovieDB.genres[i - 1] = yourGenres;
     }
-    personalMovieDB.genres.forEach(function(item, i) {
+    personalMovieDB.genres.forEach((item, i) => {
       console.log(`Любимый жанр #${i + 1} - это ${item}`);
     });
   },
@@ -85,7 +82,7 @@ const personalMovieDB = {
     }
   },
   toggleVisibleMyDB: function() {
-    if(personalMovieDB.privat === true) {
+    if(personalMovieDB.privat) {
       personalMovieDB.privat = false;
     } else {
       personalMovieDB.privat = true;
@@ -93,11 +90,25 @@ const personalMovieDB = {
   }
 };
 
+personalMovieDB.start();
 personalMovieDB.rememberMyFilms();
 personalMovieDB.detectPersonalLevel();
 personalMovieDB.writeYourGenres();
 personalMovieDB.toggleVisibleMyDB();
 personalMovieDB.showMyDB(personalMovieDB.privat);
+
+// let numberOfFilms;
+
+// function start(){
+//   numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?','');
+
+//   while(numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)){
+//     numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?','');
+//   }
+// }
+
+// start();
+
 
 // let count = 0;
 
@@ -165,10 +176,6 @@ personalMovieDB.showMyDB(personalMovieDB.privat);
 // }
 
 // showMyDB(personalMovieDB.privat);
-
-// 3) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос 
-// "Ваш любимый жанр под номером ${номер по порядку}". Каждый ответ записывается в массив данных
-// genres
 
 // function writeYourGenres(){
 //   for(let i = 1; i <= 3; i++){
